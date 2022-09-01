@@ -4,7 +4,7 @@ source 'https://rubygems.org/'
 #gem 'pmdtester', :git => 'https://github.com/pmd/pmd-regression-tester.git', branch: 'master'
 
 gem 'pmdtester'
-gem 'danger'
+gem 'danger', '>= 8.5.0'
 
 # This group is only needed for rendering release notes (docs/render_release_notes.rb)
 # this happens during release (.ci/build.sh and do-release.sh)
