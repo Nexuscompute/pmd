@@ -86,7 +86,7 @@
 
         <kotlin.compiler.jvmTarget>${maven.compiler.test.target}</kotlin.compiler.jvmTarget>
         <kotlin.version>1.7.0</kotlin.version>
-        <kotest.version>4.4.3</kotest.version>
+        <kotest.version>4.6.4</kotest.version>
         <dokka.version>1.6.21</dokka.version>
 
 
@@ -104,7 +104,7 @@
         <pmd.website.baseurl>https://pmd.github.io/pmd</pmd.website.baseurl>
 
         <argLine>-Xmx512m -Dfile.encoding=${project.build.sourceEncoding} ${extraArgLine}</argLine>
-        <extraArgLine /> <!-- empty by default, profiles set it as needed -->
+        <extraArgLine/> <!-- empty by default, profiles set it as needed -->
 
         <pmd.build-tools.version>18</pmd.build-tools.version>
 
