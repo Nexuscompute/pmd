@@ -97,14 +97,14 @@
         <pmd.plugin.version>3.18.0</pmd.plugin.version>
         <ant.version>1.10.12</ant.version>
         <javadoc.plugin.version>3.2.0</javadoc.plugin.version>
-        <antlr.version>4.7.2</antlr.version>
+        <antlr.version>4.11.1</antlr.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <pmd.website.baseurl>https://pmd.github.io/pmd</pmd.website.baseurl>
 
         <argLine>-Xmx512m -Dfile.encoding=${project.build.sourceEncoding} ${extraArgLine}</argLine>
-        <extraArgLine /> <!-- empty by default, profiles set it as needed -->
+        <extraArgLine/> <!-- empty by default, profiles set it as needed -->
 
         <pmd.build-tools.version>18</pmd.build-tools.version>
 
