@@ -105,7 +105,7 @@
         <pmd.website.baseurl>https://pmd.github.io/pmd</pmd.website.baseurl>
 
         <argLine>-Xmx512m -Dfile.encoding=${project.build.sourceEncoding} ${extraArgLine}</argLine>
-        <extraArgLine /> <!-- empty by default, profiles set it as needed -->
+        <extraArgLine/> <!-- empty by default, profiles set it as needed -->
 
         <pmd.build-tools.version>18</pmd.build-tools.version>
 
@@ -709,7 +709,7 @@
             <dependency>
                 <groupId>com.beust</groupId>
                 <artifactId>jcommander</artifactId>
-                <version>1.48</version> <!-- 1.48 is the latest version compatible with java7 -->
+                <version>1.82</version> <!-- 1.48 is the latest version compatible with java7 -->
             </dependency>
             <dependency>
                 <groupId>org.ow2.asm</groupId>
