@@ -90,7 +90,7 @@
 
 
         <kotlin.compiler.jvmTarget>${maven.compiler.test.target}</kotlin.compiler.jvmTarget>
-        <kotlin.version>1.7.20</kotlin.version>
+        <kotlin.version>1.8.22</kotlin.version>
         <kotest.version>5.5.5</kotest.version>
         <junit5.version>5.8.2</junit5.version> <!-- needed by kotest -->
         <dokka.version>1.7.20</dokka.version>
@@ -111,7 +111,7 @@
         <pmd.website.baseurl>https://docs.pmd-code.org/snapshot</pmd.website.baseurl>
 
         <argLine>-Xmx512m -Dfile.encoding=${project.build.sourceEncoding} ${extraArgLine}</argLine>
-        <extraArgLine /> <!-- empty by default, profiles set it as needed -->
+        <extraArgLine/> <!-- empty by default, profiles set it as needed -->
 
         <pmd.build-tools.version>22-SNAPSHOT</pmd.build-tools.version>
 
