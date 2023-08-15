@@ -104,14 +104,14 @@
         <javadoc.plugin.version>3.4.1</javadoc.plugin.version>
         <antlr.version>4.9.1</antlr.version>
         <slf4j.version>1.7.36</slf4j.version>
-        <saxon.version>10.7</saxon.version>
+        <saxon.version>10.9</saxon.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <pmd.website.baseurl>https://docs.pmd-code.org/snapshot</pmd.website.baseurl>
 
         <argLine>-Xmx512m -Dfile.encoding=${project.build.sourceEncoding} ${extraArgLine}</argLine>
-        <extraArgLine /> <!-- empty by default, profiles set it as needed -->
+        <extraArgLine/> <!-- empty by default, profiles set it as needed -->
 
         <pmd.build-tools.version>22-SNAPSHOT</pmd.build-tools.version>
 
