@@ -95,6 +95,22 @@ echo
 echo "Press enter to continue... (or CTRL+C to cancel)"
 read -r
 
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo
+  echo "Please enter a GITHUB_TOKEN (https://github.com/settings/tokens) that can be used to query github"
+  echo "when generating release notes. If you don't have one, you can just press enter, then anonymous access"
+  echo "will be used, but access might be rate limited (https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28)."
+  echo
+  echo -n "GITHUB_TOKEN="
+  IFS= read -r GITHUB_TOKEN
+  if [ -n "$GITHUB_TOKEN" ]; then
+    export GITHUB_TOKEN
+    echo "Using provided GITHUB_TOKEN..."
+  else
+    echo "Not using GITHUB_TOKEN"
+  fi
+fi
+
 export LAST_VERSION
 export RELEASE_VERSION
 export DEVELOPMENT_VERSION
@@ -125,24 +141,11 @@ echo
 echo "Press enter to continue..."
 read -r
 
-
-# calculating stats for release notes
-
-STATS=$(
-echo "### 📈 Stats"
-echo "* $(git log pmd_releases/"${LAST_VERSION}"..HEAD --oneline --no-merges |wc -l) commits"
-echo "* $(curl -s "https://api.github.com/repos/pmd/pmd/milestones?state=all&direction=desc&per_page=5"|jq ".[] | select(.title == \"$RELEASE_VERSION\") | .closed_issues") closed tickets & PRs"
-echo "* Days since last release: $(( ( $(date +%s) - $(git log --max-count=1 --format="%at" pmd_releases/"${LAST_VERSION}") ) / 86400))"
-)
-
-TEMP_RELEASE_NOTES=$(cat docs/pages/release_notes.md)
-TEMP_RELEASE_NOTES=${TEMP_RELEASE_NOTES/\{\% endtocmaker \%\}/${STATS//\&/\\\&}$'\n'$'\n'\{\% endtocmaker \%\}}
-echo "${TEMP_RELEASE_NOTES}" > docs/pages/release_notes.md
+# updating release notes
+.ci/tools/release-notes-generate.sh "$LAST_VERSION" "$RELEASE_VERSION"
 
 echo
-echo "Updated stats in release notes:"
-echo "$STATS"
-echo
+echo "Updated merged pull requests, dependency updates and stats in release notes:"
 echo "Please verify docs/pages/release_notes.md"
 echo
 echo "Press enter to continue..."
@@ -268,7 +271,14 @@ This is a {{ site.pmd.release_type }} release.
 
 ### 🚨 API Changes
 
-### ✨ External Contributions
+### ✨ Merged pull requests
+<!-- content will be automatically generated, see /do-release.sh -->
+
+### 📦 Dependency updates
+<!-- content will be automatically generated, see /do-release.sh -->
+
+### 📈 Stats
+<!-- content will be automatically generated, see /do-release.sh -->
 
 {% endtocmaker %}
 
@@ -289,7 +299,7 @@ echo "    <https://repo.maven.apache.org/maven2/net/sourceforge/pmd/pmd/maven-me
 echo
 echo
 echo "Then proceed with releasing pmd-designer..."
-echo "<https://github.com/pmd/pmd-designer/blob/master/releasing.md>"
+echo "<https://github.com/pmd/pmd-designer/blob/main/releasing.md>"
 echo
 echo "Press enter to continue when pmd-designer is available in maven-central..."
 echo "<https://repo.maven.apache.org/maven2/net/sourceforge/pmd/pmd-designer/maven-metadata.xml>."
